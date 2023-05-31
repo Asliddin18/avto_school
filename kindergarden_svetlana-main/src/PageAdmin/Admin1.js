@@ -89,16 +89,6 @@ export default class App extends Component {
 
                <div className="cake">
                   <div className="cake1">
-                     <select className='mad' name="" id="">
-                        {
-                           this.state.group.map(item => {
-                              return (
-                                 <option value="">{item.groupname}</option>
-                              )
-                           })
-                        }
-                     </select>
-                     <input className='mad' type="date" placeholder='Дата добавления' />
                      <button className="nodiruca" onClick={() => this.DobavNovs()}>
                         Добавить новость
                      </button>
@@ -116,8 +106,6 @@ export default class App extends Component {
 
                               <th className="btnadmp_th"> Дата </th>
                               <th className="btnadmp_th">Название</th>
-                              <th className="btnadmp_th">Группа</th>
-                              <th className="btnadmp_th">Автор</th>
                               <th className="btnadmp_th" id='borDr'>Действие</th>
 
 
@@ -126,8 +114,6 @@ export default class App extends Component {
                               <td className="btnadmp_td1">1</td>
                               <td className="btnadmp_td1">2022/12/12</td>
                               <td className="btnadmp_td1"> Экскурсия в музей</td>
-                              <td className="btnadmp_td1">  Волшебник 2 уровня </td>
-                              <td className="btnadmp_td1"> Маринина В.П.</td>
                               <td className="btnadmp_td1">
                                  <button className="butadmp1"><img src={ico2} alt="" /></button>
                                  <button className="butadmp2"><img src={ico1} alt="" /></button>
@@ -138,8 +124,6 @@ export default class App extends Component {
                               <td className="btnadmp_td1">1</td>
                               <td className="btnadmp_td1">2022/12/12</td>
                               <td className="btnadmp_td1"> Экскурсия в музей</td>
-                              <td className="btnadmp_td1">  Волшебник 2 уровня </td>
-                              <td className="btnadmp_td1"> Маринина В.П.</td>
                               <td className="btnadmp_td1">
                                  <button className="butadmp1"><img src={ico2} alt="" /></button>
                                  <button className="butadmp2"><img src={ico1} alt="" /></button>

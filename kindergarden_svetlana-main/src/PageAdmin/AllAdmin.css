@@ -137,3 +137,52 @@ h5{
     padding: 5px;
     padding-left: 20px;
 }
+
+.modalOchish{
+    width: 90%;
+    margin: auto;
+    transition: .4s;
+}
+
+.newsCreateBtns{
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    /* margin-left: 10%; */
+    margin-top: 20px;
+}
+
+.newsCreateBtns button{
+    width: 40%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    background: #000000b4;
+}
+
+.newsCreate{
+    width: 60%;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.newsCreate input {
+    width: 80%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    outline: none;
+    padding-left: 10px;
+}
+/* 
+.newsCreate p{
+    height: 7px;
+    margin-top: 10px;
+} */
+
+.videoCourse{
+    margin-top: 130px !important;
+}

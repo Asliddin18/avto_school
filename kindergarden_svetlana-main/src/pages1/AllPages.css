@@ -8,7 +8,9 @@
 }
 
 .Card-forPage{
-  width: 40%;
+  width: 60%;
+  margin: auto !important;
+  padding-left: 5%;
 }
 
 .closeDmodl{
@@ -40,7 +42,7 @@
 .ScrollBar-h2 {
   display: flex;
   margin-top: 40px;
-}
+} 
 
 .ScrollBar-h2 h2{
   color: orange;
@@ -209,20 +211,23 @@
 }
 
 .The-Big .Cards-Page1 {
-  width: 100%;
-  display: none;
+  width: 60%;
+  margin: auto;
+  display: flex;
   /* flex */
 }
 
 .The-Big .Cards-Page1 .CardProfil-Page1 {
   background: #fff;
   width: 30%;
+  height: 80vh;
   display: block !important;
   text-align: center;
   padding-top: 40px;
   border-radius: 20px;
   padding-bottom: 40px;
   position: relative;
+  margin: auto;
 }
 
 .The-Big .Cards-Page1 .Card-Page1 {
@@ -644,6 +649,11 @@
   text-align: center;
   margin-top: 10px;
   color: #334155;
+}
+
+.The-Big .form-control {
+  width: 430px !important;
+  padding-left: 45px !important;
 }
 
 .The-Big #inform1 {

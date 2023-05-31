@@ -15,8 +15,11 @@ export default function Form() {
     else if (email == "qwerty" && password !== "123123") {
       alert('parol notori, login tori')
     }
-    else {
-      alert('not');
+    if (email == "avto" && password == "avto") {
+      sessionStorage.setItem("page", 4)
+      window.location = "/";
+    } else{
+      alert('not help');
     }
   }
   return (
