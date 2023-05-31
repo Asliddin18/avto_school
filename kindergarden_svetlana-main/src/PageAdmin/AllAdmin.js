@@ -169,15 +169,14 @@ function closeModal11() {
   return (
     <BrowserRouter>
       <div className="The-Big">
-    
         <Navbar expand="lg" className='Navbar'>
           <div className='divBtnn'>
             <CgDetailsMore className='closeDmodl' onClick={() => closeSansOpen()} />
             <button className='openScrollBar' onClick={() => openSansOpen()}><CgDetailsMore /></button>
           </div>
           <Container>
-            <Navbar.Brand href="/" className="deets">
-              <img nClick={() => kali()} src={imgLogo} alt='' />
+            <Navbar.Brand className="deets" onClick={() => kali()} >
+              <img src={imgLogo} alt='' />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
@@ -206,14 +205,14 @@ function closeModal11() {
                 <h2>ЛЕНТА НОВОСТЕЙ</h2>
               </div>
             </a>
-            groupDti      <a href='/SpiskDti'>
+            <a href='/SpiskDti'>
               <div className='ScrollBar-h2'>
                 <img src={ImgScrol} alt='' />
                 <h2>Video darsliklar</h2>
               </div>
             </a>
-            <a href='/page4'>
-              <div className='ScrollBar-groupDtih2'>
+            <a href='/onlaynTest'>
+              <div className='ScrollBar-h2'>
                 <img src={ImgScrol} alt='' /> 
                 <h2>Onlayn Test</h2>
               </div>
@@ -226,7 +225,7 @@ function closeModal11() {
               <Route path="/Emp2" element={<Emp2 />} />
               <Route path="/SpiskDti" element={<SpiskDti />} />
               <Route path="/groupDti" element={<GroupDti />} />
-              <Route path="/SpsRodtl" element={<SpsRodtl />} />
+              <Route path="/onlaynTest" element={<SpsRodtl />} />
               <Route path="/Zayavv" element={<Zayavv />} />
               <Route path="/Vztsasd" element={<Vztsasd />} />
               <Route path="/Zodaniii" element={<Zodaniii />} />

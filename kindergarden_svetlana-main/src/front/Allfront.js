@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from './pages/HomePage'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NumberPage from './pages/Form'
-
+import Regitratsiya from './pages/RestApi'
 
 
 export default function Allfront() {
@@ -36,6 +36,11 @@ export default function Allfront() {
                   Kirish
               </button>
                 </a>
+                <a  className='buttonVxd' href='/Regitratsiya'>
+              <button className='buttonVxd'>
+              Ro'yhatdan o'tish
+              </button>
+                </a>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -43,7 +48,8 @@ export default function Allfront() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/NumberPage" element={<NumberPage />}>
+          <Route path="/NumberPage" element={<NumberPage />} />
+          <Route path="/Regitratsiya" element={<Regitratsiya />} >
           </Route>
         </Routes>
       </BrowserRouter>

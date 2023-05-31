@@ -29,7 +29,9 @@ function CollapsibleExample() {
         <div className='headCards'>
           <h1>Drivers: Online ta'lim va haydovchilik maktablari uchun bepul platforma</h1>
           <p>Biz onlayn ta'limni joriy etish va yo'lga qo'yish, nazariya va haydovchilik imtihonlarini boshqarishni soddalashtirishga yordam beramiz</p>
+          <a href='/Regitratsiya'>
           <button>Ro'yxatdan o'tish</button>
+          </a>
         </div>
         <div className='headCards'>
           <img src={cardImg} alt='' />
@@ -41,7 +43,9 @@ function CollapsibleExample() {
           <div>
             <h1>Drivers: Online ta'lim va haydovchilik maktablari uchun bepul platforma</h1>
             <p>Biz onlayn ta'limni joriy etish va yo'lga qo'yish, nazariya va haydovchilik imtihonlarini boshqarishni soddalashtirishga yordam beramiz</p>
+            <a href='/Regitratsiya'>
             <button>Ro'yxatdan o'tish</button>
+            </a>
           </div>
         </div>
       </div>

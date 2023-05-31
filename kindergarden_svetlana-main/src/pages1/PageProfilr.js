@@ -1,62 +1,77 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Img1 from '../img/free-icon-user-149071 1 (1).png'
 import PhoneInput from 'react-phone-input-2'
 import './AllPages.css'
+import axios from 'axios'
+import url from '../host'
 
 export default function Page1() {
-  const [phone2, usePhone2] = useState()
+  var [data, setData] = useState(JSON.parse(localStorage.getItem("email")))
+  function putData() {
+    var dataEshak = new FormData()
+    dataEshak.append('username', document.querySelector('.username').value)
+    dataEshak.append('password', document.querySelector('.password').value)
+    dataEshak.append('email', document.querySelector('.email').value)
+    dataEshak.append('category', document.querySelector('.category').value)
+    dataEshak.append('phone', document.querySelector('.form-control').value)
+    dataEshak.append('passportser', document.querySelector('.passportser').value)
+    dataEshak.append('passportnumber', document.querySelector('.passportnumber').value)
+    dataEshak.append('videotoken', 3)
+    dataEshak.append('position_category', 'user')
+    axios.put(`${url}/users/${data.userid}`, dataEshak).then(res => {
+      alert('Success')
+      window.location.reload()
+    })
+  }
+
+
+
+
   return (
     <div className='The-Big'>
       <div className="Cards-Page1">
-        <div className="CardProfil-Page1">
-          <img src={Img1} alt="" /><br />
-          <button>Сменить фото</button>
-          <input type="file" className='inpOpacity' />
-        </div>
-        <div className="Card-Page1">  
-          <div className="Input-grup">
-            <h4>Фамилия</h4>
-            <input type="text" placeholder='Малинина' />
-          </div>
+        <div className="Card-Page1">
           <div className="Input-grup">
             <h4>Имя</h4>
-            <input type="text" placeholder='Виктория' />
+            <input type="text" className='username' placeholder={data.username} />
           </div>
           <div className="Input-grup">
-            <h4>Отчество</h4>
-            <input type="text" placeholder='Петровна' />
-          </div>
-          <div className="Input-grup">
-            <h4>Дата рождения</h4>
-            <input type="date" placeholder='1979/12/20' />
-          </div>
-          <div className="Input-grup">
-            <h4>Улица</h4>
-            <input type="text" placeholder='Аткарская' />
-          </div>
-          <div className="Input-grup">
-            <h4>Passport series</h4>
-            <input type="number" placeholder='Passport series' />
-          </div>
-          <div className="Input-grup">
-            <h4>Номер телефона</h4>
+            <h4>phone</h4>
             <PhoneInput
-             id="userNumber2"
-             className='userNumber2'
-             country={'ru'}
-             value={phone2}
-             onChange={phone2 => usePhone2}
-             />
+              id='userNumber2'form-control
+              className='userNumber2'
+              country={'ru'}
+            />
+            {/* <input type="text" placeholder={data.phone} /> */}
           </div>
           <div className="Input-grup">
-            <h4>E-mail</h4>
-            <input type="gmail" placeholder='rew@mail.ru' />
+            <h4>email</h4>
+            <input type="text" className='email' placeholder={data.email} />
+          </div>
+          <div className="Input-grup">
+            <h4>Kategoriya</h4>
+            <input type="text" className='category' placeholder={data.category} />
+          </div>
+          <div className="Input-grup">
+            <h4>Password</h4>
+            <input type="text" className='password' placeholder={data.password} />
+          </div>
+          <div className="Input-grup">
+            <h4>passportser </h4>
+            <input type="text" className='passportser' placeholder={data.passportser} />
+          </div>
+          <div className="Input-grup">
+            <h4>Passport nomer</h4>
+            <input type="text" className='passportnumber' placeholder={data.passportnumber} />
+          </div>
+          <div className='btn-groupPg1'>
+            <button onClick={() => putData()}>Saqlash</button>
           </div>
         </div>
       </div>
     </div>
   )
-} 
+}
 
 
 

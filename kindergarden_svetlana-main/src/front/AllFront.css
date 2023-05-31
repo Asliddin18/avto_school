@@ -20,13 +20,13 @@ body {
 }
 
 .navbarNav {
-  width: 30%;
+  width: 50%;
   display: flex;
   justify-content: space-evenly;
 }
 
 .buttonVxd {
-  width: 40%;
+  width: 30%;
   /* height: 30px; */
   border-radius: 10px;
   border: none;
@@ -34,6 +34,7 @@ body {
   color: white;
   font-weight: 600;
   display: flex;
+  font-size: 15px;
   justify-content: center;
   align-items: center;
 }
@@ -541,4 +542,44 @@ body {
   .linearDiv p{
     font-size: 15px;
   }
+}
+
+
+.FormRegister{
+  margin-top: 100px;
+}
+
+.regasd{
+  margin-left: 0 !important;
+  width: 70% !important;
+  height: 40px !important;
+  transition: .3s;
+}
+
+.regasd:hover{
+  border: 1px solid orange;
+  cursor: pointer;
+  background: none;
+  color: orange;
+}
+
+.modalForm2{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: #00000058;
+  padding-top: 300px;
+  text-align: center;
+  color: whitesmoke;
+  text-shadow: 0 0 2px white;
+  display: none;
+}
+
+#homeForm{
+  width: 30%;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
 }
