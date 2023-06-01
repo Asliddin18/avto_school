@@ -17,8 +17,10 @@ import { AiOutlineRight } from 'react-icons/ai'
 import img from '../img/welcome_image.jpg'
 import Accordion from 'react-bootstrap/Accordion';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-
+import { SlUserFemale } from 'react-icons/sl'
+import { FaGraduationCap } from 'react-icons/fa'
+import { BsCarFrontFill } from 'react-icons/bs'
+import { BsCalendar3 } from 'react-icons//bs'
 
 
 
@@ -30,7 +32,7 @@ function CollapsibleExample() {
           <h1>Drivers: Online ta'lim va haydovchilik maktablari uchun bepul platforma</h1>
           <p>Biz onlayn ta'limni joriy etish va yo'lga qo'yish, nazariya va haydovchilik imtihonlarini boshqarishni soddalashtirishga yordam beramiz</p>
           <a href='/Regitratsiya'>
-          <button>Ro'yxatdan o'tish</button>
+            <button>Ro'yxatdan o'tish</button>
           </a>
         </div>
         <div className='headCards'>
@@ -44,7 +46,7 @@ function CollapsibleExample() {
             <h1>Drivers: Online ta'lim va haydovchilik maktablari uchun bepul platforma</h1>
             <p>Biz onlayn ta'limni joriy etish va yo'lga qo'yish, nazariya va haydovchilik imtihonlarini boshqarishni soddalashtirishga yordam beramiz</p>
             <a href='/Regitratsiya'>
-            <button>Ro'yxatdan o'tish</button>
+              <button>Ro'yxatdan o'tish</button>
             </a>
           </div>
         </div>
@@ -81,6 +83,24 @@ function CollapsibleExample() {
         </div>
         <div className='linearDiv'>
           <img src={img} />
+        </div>
+      </div>
+      <div className='malumotlar_Avto'>
+        <div className='malumot_div'>
+          <h1><SlUserFemale className='iconDars' />Bolalar Bilan Onalar</h1>
+          <p>Uydan kamdan-kam chiqa oladigan va undan ham ko'proq haftalik ravishda barqaror jadval bo'yicha onalar uchun ma'ruzalar kursini masofadan turib tinglash har doim osonroqdir.</p>
+        </div>
+        <div className='malumot_div'>
+          <h1>&nbsp;&nbsp;<FaGraduationCap className='iconDars' />Talabalar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+          <p>Haydovchilik guvohnomasiga tayyorgarlik ko'rish uchun juda foydali format, agar siz har doim darsga borishga vaqtingiz bo'lmasa, o'qishni ish bilan birlashtirishga imkon beradi.</p>
+        </div>
+        <div className='malumot_div'>
+          <h1><BsCarFrontFill className='iconDars' />Shahar Tashqarisida Yashash</h1>
+          <p>Shahar tashqarisida yashovchi va haydovchilik maktabiga muntazam sayohatlarga katta mablag 'sarflaydigan odamlar uchun</p>
+        </div>
+        <div className='malumot_div'>
+          <h1><BsCalendar3 className='iconDars' />&nbsp;Noto'g'ri Jadval Bilan</h1>
+          <p>Noto'g'ri jadval bilan ishlaydigan va haydovchilik maktabiga borishni oldindan rejalashtira olmaydiganlar uchun.</p>
         </div>
       </div>
       <div className='Tavsilot' id='aloqa'>

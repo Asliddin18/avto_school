@@ -19,7 +19,7 @@ export default function Form() {
       }
       if (key) {
         // alert('You have')
-        if (email == 'admin' && password == ' ') {
+        if (email == 'admin' && password == '123123') {
           sessionStorage.setItem("page", 4);
           window.location = "/";  
         } else {
