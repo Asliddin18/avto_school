@@ -2,72 +2,95 @@ import React, { useEffect, useState } from 'react'
 import './AllPages.css'
 import url from '../host'
 import axios from 'axios'
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
 
 
 
 export default function Page4() {
   var [data, setData] = useState([])
   var [data2, setData2] = useState(0)
-  var [selected, setSelected] = useState(
-    data.map((item) => item.choices.map(() => false))
+  const [answered, setAnswered] = useState(
+    data.map((item) => false)
   );
   useEffect(() => {
     axios.get(`${url}/test`).then(res => {
       setData(res.data)
     })
   }, [])
-  function hh(index) {
-    if (selected && Array.isArray(selected[index[0]]) && typeof selected[index[0]][index[1]] === 'boolean' && !selected[index[0]][index[1]]) {
-      setSelected((prevSelected) => {
-        const newSelected = [...prevSelected];
-        newSelected[index[0]][index[1]] = true;
-        return newSelected;
+  function hh(itemId, choiceIndex) {
+    if (!answered[itemId]) {
+      const ball = 5;
+      setData2(data2 + ball);
+      setAnswered((prevAnswered) => {
+        const newAnswered = [...prevAnswered];
+        newAnswered[itemId] = true;
+        return newAnswered;
       });
-      setData2((prevData2) => prevData2 + 5);
+      console.log("turi");
+    } else {
+      console.log("notori");
     }
+    console.log(data2);
   }
 
   return (
     <div>
-{
-  data.map((item) => {
-    return (
-      <div className='TestDiv'>
-        <div className='imgTest'>
-          <img src='' alt='' />
-       
-        </div>
-        <div className='TestVariant'>
-          <h1>{item.question}</h1>
-          {item.choices.map((choice, index) => {
-  return (
-    <div key={index}>
-      <p>{choice.text}</p>
-      <p>{choice.answer}</p>
-      <button
-  disabled={selected[item.id][index]}
-  onClick={() => hh([item.id, index])}
->
-  Ответить
-</button>
-    </div>
-  );
-})}
-    
-        </div>
-      </div>
-    )
-    
-  })
-  
-}
+      {/* <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide>Slide 9</SwiperSlide>
+      </Swiper> */}
+      
+      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+      {
+        data.map((item) => {
+          return (
+            <SwiperSlide>
 
-<h1>{data2}</h1>
+              <div className='TestDiv'>
+                <div className='imgTest'>
+                  <img src='' alt='' />
+
+                </div>
+                <div className='TestVariant'>
+                  <h1>{item.question}</h1>
+                  {item.choices.map((choice) => {
+                    return (
+                      <div>
+                        <p >{choice.text}</p>
+                        <p>{choice.answer}</p>
+                        <button
+                          disabled={answered[item.id]}
+                          onClick={() => hh(item.id)}
+                        >
+                          Ответить
+                        </button>
+                      </div>
+                    )
+                  })}
+
+                </div>
+              </div>
+            </SwiperSlide>
+          )
+
+        })
+        
+      }
+      <SwiperSlide>
+        <h1>oxiri</h1>
+      <h1>{data2}</h1>
+      </SwiperSlide>
+      </Swiper>
 
     </div>
   )
 }
-
 // import React from 'react'
 
 // export default function Page4() {
