@@ -12,8 +12,8 @@ import url from '../host';
 
 export default class App extends Component {
    state = {
-      group: [],
-      region: []
+      news: [],
+      editedMp: []
    }
 
 
@@ -29,14 +29,14 @@ export default class App extends Component {
       //    }).finally(() => {
       //       // document.querySelector('.hallo_as').style = 'display: block'
       //    });
-      axios.get(`${url}/group`).then(res => {
-         this.setState({ group: res.data })
+      axios.get(`${url}/news`).then(res => {
+         this.setState({ news: res.data })
       })
 
-      console.log('dvfnumi');
-      axios.get(`${url}/address`).then(res => {
-         this.setState({ region: res.data })
-      })
+      // console.log('dvfnumi');
+      // axios.get(`${url}/address`).then(res => {
+      //    this.setState({ region: res.data })
+      // })
 
    }
 
@@ -52,6 +52,56 @@ export default class App extends Component {
       document.querySelector('.asdsad').style = 'display: block'
    }
 
+   postNews = () => {
+      var news = new FormData();
+      news.append('news_desc', document.querySelector('.News_desc').value);
+      news.append('news_title', document.querySelector('.news_title').value);
+      axios.post(`${url}/news`, news).then(res => {
+         alert('Yaratildi')
+         window.location.reload()
+      }).catch(err => {
+         alert(err)
+      })
+   }
+
+
+   CloseEditor = () => {
+      document.querySelector('.SozdatNovs2').style = 'display: none'
+      document.querySelector('.asdsad').style = 'display: block'
+   }
+
+
+   DeleteNews = (key) => {
+      axios.delete(`${url}/news/${key}`).then(res => {
+         alert('O"chirildi')
+         window.location.reload()
+      })
+   }
+
+   OpenEditor = (key) => {
+      console.log(key);
+      axios.get(`${url}/news/${key}`).then(res => {
+         this.setState({
+            editedMp: res.data
+         })
+      }
+      )
+      document.querySelector('.asdsad').style = 'display: none'
+      document.querySelector('.SozdatNovs2').style = 'display: block'
+   }
+
+   EditEditor = (key) => {
+      var editedDate = new FormData()
+      editedDate.append('news_desc', document.querySelector('.News_desc2').value);
+      editedDate.append('news_title', document.querySelector('.news_title2').value);
+      axios.put(`${url}/news/${key}`, editedDate).then(res => {
+         alert('yangilandi')
+         window.location.reload()
+      }).catch(err =>
+         console.log(err)
+      )
+   }
+
 
    render() {
       return (
@@ -60,30 +110,32 @@ export default class App extends Component {
 
             </div>
             <div className="SozdatNovs">
-               <h2>Создать новость</h2>
-               <div className="Anket">
-                  <h4>Заголовок</h4>
-                  <input type="text" />
-                  <h4>Текст</h4>
-                  <textarea></textarea>
-                  <h4>Прикрепить файл</h4>
-                  <input type="text" />
-
-                  <h4>Выбрать адресата</h4>
-                  <select>
-                     {
-                        this.state.region.map(item => {
-                           return (
-                              <option>{item.region}</option>
-                           )
-                        })
-                     }
-                  </select>
+               <h4>Yangilik sarlavhasi</h4>
+               <input className='News_desc' type="text" />
+               <h4>Test</h4>
+               <textarea className='news_title'></textarea>
+               <div className="btn-group">
+                  <button onClick={() => this.CloseNovs()}>Bekor qilish</button>
+                  <button onClick={() => this.postNews()}>Yaratish</button>
                </div>
-               <div className='btn-group'>
-                  <button onClick={() => this.CloseNovs()}>Отменит</button>
-                  <button>Сохранит</button>
-               </div>
+            </div>
+            <div className="SozdatNovs2">
+               {
+                  this.state.editedMp.map(item => {
+                     return (
+                        <div>
+                           <h4>Yangilik sarlavhasi</h4>
+                           <input className='News_desc2' type="text" placeholder={item.news_desc} />
+                           <h4>Test</h4>
+                           <textarea className='news_title2' placeholder={item.news_title}></textarea>
+                           <div className="btn-group">
+                              <button onClick={() => this.CloseEditor()}>Bekor qilish</button>
+                              <button onClick={() => this.EditEditor(item.newsid)}>Yangilash</button>
+                           </div>
+                        </div>
+                     )
+                  })
+               }
             </div>
             <div className="asdsad">
 
@@ -110,29 +162,36 @@ export default class App extends Component {
 
 
                            </tr>
-                           <tr className="btnadmp_tr1" >
-                              <td className="btnadmp_td1">1</td>
-                              <td className="btnadmp_td1">2022/12/12</td>
-                              <td className="btnadmp_td1"> Экскурсия в музей</td>
-                              <td className="btnadmp_td1">
-                                 <button className="butadmp1"><img src={ico2} alt="" /></button>
-                                 <button className="butadmp2"><img src={ico1} alt="" /></button>
-                              </td>
-                           </tr>
 
-                           <tr className="btnadmp_tr1" id='ad3weasd'>
-                              <td className="btnadmp_td1">1</td>
-                              <td className="btnadmp_td1">2022/12/12</td>
-                              <td className="btnadmp_td1"> Экскурсия в музей</td>
-                              <td className="btnadmp_td1">
-                                 <button className="butadmp1"><img src={ico2} alt="" /></button>
-                                 <button className="butadmp2"><img src={ico1} alt="" /></button>
-                              </td>
-                           </tr>
-
-
-
-
+                           {
+                              this.state.news.map((news) => {
+                                 if (this.state.news.length != 0) {
+                                    return (
+                                       <tr className="btnadmp_tr1" >
+                                          <td className="btnadmp_td1">{news.newsid}</td>
+                                          <td className="btnadmp_td1">{news.syscreatedatutc.slice(0, 10)}</td>
+                                          <td className="btnadmp_td1">{news.news_desc}</td>
+                                          <td className="btnadmp_td1">
+                                             <button className="butadmp1" onClick={() => this.OpenEditor(news.newsid)}><img src={ico2} alt="" /></button>
+                                             <button className="butadmp2" onClick={() => this.DeleteNews(news.newsid)}><img src={ico1} alt="" /></button>
+                                          </td>
+                                       </tr>
+                                    )
+                                 } else {
+                                    return (
+                                       <tr className="btnadmp_tr1" id='gjk'>
+                                          <td className="btnadmp_td1">Bu yerda Ma'lumot yo'q</td>
+                                          <td className="btnadmp_td1"></td>
+                                          <td className="btnadmp_td1"></td>
+                                          <td className="btnadmp_td1">
+                                             <button className="butadmp1" onClick={() => this.OpenEditor(news.newsid)}><img src={ico2} alt="" /></button>
+                                             <button className="butadmp2" onClick={() => this.DeleteNews(news.newsid)}><img src={ico1} alt="" /></button>
+                                          </td>
+                                       </tr>
+                                    )
+                                 }
+                              })
+                           }
                         </table>
                      </div>
                   </div>

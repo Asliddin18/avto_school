@@ -18,9 +18,10 @@ export default function Page1() {
     dataEshak.append('passportnumber', document.querySelector('.passportnumber').value)
     dataEshak.append('videotoken', 3)
     dataEshak.append('position_category', 'user')
+    dataEshak.append('syscreatedatutc', '2023-05-31T11:06:46.492Z')
     axios.put(`${url}/users/${data.userid}`, dataEshak).then(res => {
       alert('Success')
-      window.location.reload()
+      window.location = '/'
     })
   }
 

@@ -18,7 +18,13 @@ export default function Form() {
         }
       }
       if (key) {
-        alert('You have')
+        // alert('You have')
+        if (email == 'admin' && password == ' ') {
+          sessionStorage.setItem("page", 4);
+          window.location = "/";  
+        } else {
+          alert('To"g"ri kelmadi')
+        }
       } else {
         sessionStorage.setItem("page", 2);
         window.location = "/";

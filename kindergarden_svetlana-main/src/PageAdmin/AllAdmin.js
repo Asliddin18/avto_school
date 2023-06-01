@@ -190,8 +190,9 @@ function closeModal11() {
                 <Nav.Link className="deets" id='deeets'>
                   8 800 550-03-74
                 </Nav.Link>
-                <a className='buttonVxd2' href='/PageProfilr'>
+                <a className='buttonVxd2'>
                   <img src={user} />
+                  Super Admin
                 </a>
               </Nav>
             </Navbar.Collapse>
