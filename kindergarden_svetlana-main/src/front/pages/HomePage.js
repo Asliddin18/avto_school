@@ -178,8 +178,7 @@ function CollapsibleExample() {
           <a href='tel: +998 (90) 123-45-67'>
             <p className='class'>+998 (90) 123-45-67</p>
           </a>
-        </div>\
-https://www.youtube.com/embed/AkjjqEH5Cis
+        </div>
       </div>
     </>
   );
