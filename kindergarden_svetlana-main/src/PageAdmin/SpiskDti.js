@@ -10,9 +10,11 @@ export default function SpiskDti() {
   var [video, setVideo] = useState([])
   var [videogt, setVideogt] = useState([])
   function axiosPost() {
+    var link = document.querySelector('.video-link').value
+    var sls = link.replace('.be', 'be.com/embed')
     var data = new FormData()
     data.append('video_title', document.querySelector('.video-title').value)
-    data.append('video_link', document.querySelector('.video-link').value)
+    data.append('video_link', sls)
     axios.post(`${url}/video`, data).then(res => {
       alert('yaratildi')
       window.location.reload()

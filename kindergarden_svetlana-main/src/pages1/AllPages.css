@@ -1825,3 +1825,8 @@ align-items: center;
   font-weight: 600;
   margin-top: 20px;
 }
+
+.TestDiv{
+  width: 100%;
+  display: flex;
+}
