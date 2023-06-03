@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import './AllPages.css'
 import url from '../host'
 import axios from 'axios'
@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper";
+import { Navigation, Autoplay, Pagination } from "swiper";
 
 
 
@@ -36,56 +36,94 @@ export default function Page4() {
     }
     console.log(data2);
   }
+  const progressCircle = useRef(null);
+  const progressContent = useRef(null);
+  const onAutoplayTimeLeft = (s, time, progress) => {
+    progressCircle.current.style.setProperty('--progress', 1 - progress);
+    progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
+  };
 
   return (
-    <div>
+    <div className='guhi'>
       {/* <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         <SwiperSlide>Slide 9</SwiperSlide>
         <SwiperSlide>Slide 9</SwiperSlide>
         <SwiperSlide>Slide 9</SwiperSlide>
         <SwiperSlide>Slide 9</SwiperSlide>
       </Swiper> */}
-      
-      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-      {
-        data.map((item) => {
-          return (
-            <SwiperSlide>
 
-              <div className='TestDiv'>
-                <div className='imgTest'>
-                  <img src='' alt='' />
+        <div className="autoplay-progress" slot="container-end">
+          <svg viewBox="0 0 48 48" ref={progressCircle}>
+          </svg>
+          <span ref={progressContent}></span>
+        </div>    
 
+      <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 30000,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        onAutoplayTimeLeft={onAutoplayTimeLeft}
+        className="mySwiper"
+      >{
+          data.map((item) => {
+            return (
+              <SwiperSlide>
+
+                <div className='TestDiv'>
+                  <div className='imgTest'>
+                    {
+                      data.map((item) => {
+                        if (item.media.exist == true) {
+                          // console.log(item.media.name, 'true');
+                          return (
+                            <img src={`${url}/${item.media.exist}`} alt='' />
+                          )
+                        } else{
+                          // <img src={`${url}/${item.media.exist}`} alt='' />
+                        }
+                      })
+                    }
+                    <img src='' alt='' />
+
+                  </div>
+                  <div className='TestVariant'>
+                    <h1>{item.question}</h1>
+                    {item.choices.map((choice) => {
+                      return (
+                        <div>
+                          <p >{choice.text}</p>
+                          <p>{choice.answer}</p>
+                          <button
+                            disabled={answered[item.id]}
+                            onClick={() => hh(item.id)}
+                          >
+                            Ответить
+                          </button>
+                        </div>
+                      )
+                    })}
+
+                  </div>
                 </div>
-                <div className='TestVariant'>
-                  <h1>{item.question}</h1>
-                  {item.choices.map((choice) => {
-                    return (
-                      <div>
-                        <p >{choice.text}</p>
-                        <p>{choice.answer}</p>
-                        <button
-                          disabled={answered[item.id]}
-                          onClick={() => hh(item.id)}
-                        >
-                          Ответить
-                        </button>
-                      </div>
-                    )
-                  })}
+              </SwiperSlide>
+            )
 
-                </div>
-              </div>
-            </SwiperSlide>
-          )
+          })
 
-        })
-        
-      }
-      <SwiperSlide>
-        <h1>oxiri</h1>
-      <h1>{data2}</h1>
-      </SwiperSlide>
+        }
+        <SwiperSlide>
+          <h1>oxiri</h1>
+          <h1>{data2}</h1>
+        </SwiperSlide>
+
       </Swiper>
 
     </div>
