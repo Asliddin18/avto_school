@@ -1,0 +1,46 @@
+.test_12 .content { margin-top:54px; }
+.test_12 .header {padding:15px; position:fixed; top:0; width:100%; z-index:9999; }
+.test_12 .left-title { width:80px; color:#FFF; font-size:18px; float:left; }
+.test_12 .right-title { width:150px; text-align:right; float:right; color:#FFF;  }
+.test_12 .quiz-body { margin-top:15px; padding-bottom:50px; }
+.test_12 .option-block-container { margin-top:20px; max-width:420px; }
+.test_12 .option-block { padding:10px; background:aliceblue; border:1px solid #84c5fe; margin-bottom:10px; cursor:pointer; }
+.test_12 .result-question { font-weight:bold; }
+.test_12 .c-wrong { margin-left:20px; color:#FF0000; }
+.test_12 .c-correct {  margin-left:20px; color:green; }
+.test_12 .last-row { border-bottom:1px solid #ccc; padding-bottom:25px; margin-bottom:25px; }
+.test_12 .res-header { border-bottom:1px solid #ccc; margin-bottom:15px; padding-bottom:15px; }
+.test_12 .form-check-input{
+margin-left: 20px !important ;
+margin-right: 10px;
+}
+.test_12 .ss{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.ss{
+    min-width:300px;
+}
+.ss img{
+    width: 100%;
+}
+.test_12 .form-check-label{
+    width: 300px;
+}
+.oyna12{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    width: 100%;
+}
+.oii h2{
+    font-size: 6vw;
+}
+.oii{
+width: 400px;
+border: 1px solid gray;
+padding: 20px;
+text-align: center;
+}
