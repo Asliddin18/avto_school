@@ -36,7 +36,7 @@ function CollapsibleExample() {
           </a>
         </div>
         <div className='headCards'>
-          <img src={cardImg} alt='' />
+          {/* <img src={cardImg} alt='' /> */}
         </div>
       </div>
       <div className='headers2'>
